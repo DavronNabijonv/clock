@@ -6,16 +6,17 @@ export default function Up_down({
   set_function,
   for_icon,
   for_icon2,
+  btn_style
 }) {
   return (
     <>
       {togle_disabled ? (
-        <button id={id_name}>
+        <button id={id_name} style={btn_style}>
           {for_icon}
           {for_icon2}
         </button>
       ) : (
-        <button id={id_name} onClick={set_function}>
+        <button id={id_name} style={btn_style} onClick={set_function}>
           {for_icon}
           {for_icon2}
         </button>
