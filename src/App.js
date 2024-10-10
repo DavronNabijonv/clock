@@ -40,6 +40,13 @@ function App() {
     }
     return () => clearInterval(intervalRef.current);
   }, [runTime, break_counts.b_session]);
+
+  useEffect(() => {
+    setTimeValues({
+      second:0,
+      minute: break_counts.b_session,
+    });
+  }, [break_counts.b_session]);
   
 
   const calculate = (value, c_variables) => {
@@ -60,17 +67,7 @@ function App() {
           }));
         }
         break;
-      default:
-        setBreak_counts({
-          b_length: 5,
-          b_session: 25,
-        });
-        break;
     }
-  };
-
-  const playTime = () => {
-    setRunTime(!runTime);
   };
 
   return (
@@ -91,6 +88,7 @@ function App() {
                 set_function={() => {
                   calculate("-", "b_length");
                 }}
+                togle_disabled={runTime}
               />
               <p id="break-length">{break_counts.b_length}</p>
               <Up_down
@@ -100,6 +98,7 @@ function App() {
                 set_function={() => {
                   calculate("+", "b_length");
                 }}
+                togle_disabled={runTime}
               />
             </div>
           </div>
@@ -117,6 +116,7 @@ function App() {
                     minute:break_counts.b_session
                   }))
                 }}
+                togle_disabled={runTime}
               />
               <p id="session-length">{break_counts.b_session}</p>
               <Up_down
@@ -130,6 +130,7 @@ function App() {
                     minute:break_counts.b_session
                   }))
                 }}
+                togle_disabled={runTime}
               />
             </div>
           </div>
@@ -161,7 +162,7 @@ function App() {
             id_name={"start-stop"}
             for_icon={<IoPlaySharp />}
             for_icon2={<GrPauseFill />}
-            set_function={playTime}
+            set_function={()=>{setRunTime(!runTime);}}
           />
           <Up_down
             id_name={"reset"}

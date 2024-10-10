@@ -1,10 +1,25 @@
 import React, { useContext } from "react";
 
-export default function Up_down({ id_name, set_function, for_icon, for_icon2 }) {
-
+export default function Up_down({
+  togle_disabled,
+  id_name,
+  set_function,
+  for_icon,
+  for_icon2,
+}) {
   return (
-    <button id={id_name} onClick={set_function}>
-      {for_icon}{for_icon2}
-    </button>
+    <>
+      {togle_disabled ? (
+        <button id={id_name}>
+          {for_icon}
+          {for_icon2}
+        </button>
+      ) : (
+        <button id={id_name} onClick={set_function}>
+          {for_icon}
+          {for_icon2}
+        </button>
+      )}
+    </>
   );
 }
