@@ -25,18 +25,19 @@ function App() {
 
   const changeTimeValues = () =>{
     if(changeMinute){
-      setTimeValues((prev)=>({
-        ...prev,
+      setTimeValues({
+        second:0,
         minute:break_counts.b_length
-      }))
+      })
       setChangeMinute(false);
     }else{
-      setTimeValues((prev)=>({
-        ...prev,
+      setTimeValues({
+        second:0,
         minute:break_counts.b_session
-      }))
+      })
       setChangeMinute(true);
     }
+    setRunTime(true);
     }
   
 
@@ -45,7 +46,8 @@ function App() {
       intervalRef.current = setInterval(() => {
         setTimeValues((prev) => {
           const { minute, second } = prev;
-          if(minute == 0){
+          if(minute === 0 && second === 0){
+            audioRef.current.play();
             changeTimeValues();
           }
           if (second > 0) {
@@ -61,7 +63,7 @@ function App() {
       }, 1000);
     }
     return () => clearInterval(intervalRef.current);
-  }, [runTime, break_counts.b_session]);
+  }, [runTime, break_counts.b_session,changeMinute]);
 
   useEffect(() => {
     setTimeValues({
@@ -169,8 +171,8 @@ function App() {
 
         {/* time */}
 
-        <div className="timer" style={timeValues.minute ===1?{color:"red"}:{}}>
-          <p id="timer-label">Session</p>
+        <div className="timer" style={timeValues.minute === 1 ? {color:"red"}:{}}>
+          <p id="timer-label">{changeMinute?'Session':'Break'}</p>
           <p id="time-left">
             <span className="minute">
               {timeValues.minute < 10
