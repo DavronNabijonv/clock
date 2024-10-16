@@ -82,13 +82,11 @@ font-size:35px;
 }
 
 .App .clock .timer #timer-label{
-color: white;
 font-size: 28px;
 }
 
 .App .clock .timer #time-left{
   font-size: 75px;
-  color: white;
 }
 
 .App .clock .controlTime{

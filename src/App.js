@@ -20,6 +20,7 @@ function App() {
   });
   const [runTime, setRunTime] = useState(false);
   const [changeMinute, setChangeMinute] = useState(true);
+  const [changeColor, setChangeColor] = useState(true)
   const intervalRef = useRef(null);
   const audioRef = useRef(null);
 
@@ -46,10 +47,21 @@ function App() {
       intervalRef.current = setInterval(() => {
         setTimeValues((prev) => {
           const { minute, second } = prev;
+
+          // when minute is equeal to one change color of time play and text
+          if(minute === 0){
+            setChangeColor(false);
+          }else{
+            setChangeColor(true)
+          }
+
+          // when minute is over change break and session
           if(minute === 0 && second === 0){
             audioRef.current.play();
             changeTimeValues();
           }
+
+          // time play
           if (second > 0) {
             return { ...prev, second: second - 1 };
           } else if (minute > 0) {
@@ -171,7 +183,7 @@ function App() {
 
         {/* time */}
 
-        <div className="timer" style={timeValues.minute === 1 ? {color:"red"}:{}}>
+        <div className="timer" style={changeColor ? {color:"white"}:{color:"red"}}>
           <p id="timer-label">{changeMinute?'Session':'Break'}</p>
           <p id="time-left">
             <span className="minute">
