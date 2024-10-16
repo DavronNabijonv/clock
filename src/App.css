@@ -1,4 +1,4 @@
-button{
+button {
   background: none;
   border: none;
   color: white;
@@ -6,7 +6,7 @@ button{
 
 .App {
   text-align: center;
-  background: rgb(30,85,92);
+  background: rgb(30, 85, 92);
   position: absolute;
   top: 0;
   left: 0;
@@ -19,28 +19,29 @@ button{
   justify-content: center;
 }
 
-.App .clock{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 20px;
-width: 30%;
+.App .clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 500px;
+  padding: 0 15px;
 }
 
-.App .clock h1{
+.App .clock h1 {
   color: white;
   font-size: 40px;
 }
 
-.App .clock .breaks{
+.App .clock .breaks {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.App .clock .breaks .length_session{
+.App .clock .breaks .length_session {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,28 +50,28 @@ width: 30%;
 }
 
 .App .clock .breaks .length_session #break-label,
-.App .clock .breaks .length_session #session-label{
-color: white;
-font-size:35px;
+.App .clock .breaks .length_session #session-label {
+  color: white;
+  font-size: 35px;
 }
 
-.App .clock .breaks .length_session .btns_grp{
+.App .clock .breaks .length_session .btns_grp {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.App .clock .breaks .length_session .btns_grp button{
+.App .clock .breaks .length_session .btns_grp button {
   font-size: 20px;
 }
 
 .App .clock .breaks .length_session .btns_grp #break-length,
-.App .clock .breaks .length_session .btns_grp #session-length{
+.App .clock .breaks .length_session .btns_grp #session-length {
   font-size: 28px;
   color: white;
 }
 
-.App .clock .timer{
+.App .clock .timer {
   border: 6px solid rgb(19, 53, 58);
   border-radius: 35px;
   padding: 10px 30px;
@@ -81,21 +82,21 @@ font-size:35px;
   gap: 5px;
 }
 
-.App .clock .timer #timer-label{
-font-size: 28px;
+.App .clock .timer #timer-label {
+  font-size: 28px;
 }
 
-.App .clock .timer #time-left{
+.App .clock .timer #time-left {
   font-size: 75px;
 }
 
-.App .clock .controlTime{
+.App .clock .controlTime {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.App .clock .clock_footer{
+.App .clock .clock_footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,13 +105,58 @@ font-size: 28px;
   font-family: "Share Tech Mono", sans;
 }
 
-.App .clock .clock_footer .red_txt{
+.App .clock .clock_footer .red_txt {
   color: rgb(165, 13, 13);
   font-size: 18px;
 }
 
-.App .clock .clock_footer a{
-  color:  rgb(0, 38, 77);
+.App .clock .clock_footer a {
+  color: rgb(0, 38, 77);
   text-decoration: none;
-  font-size: 18px
+  font-size: 18px;
+}
+
+/* responsive part */
+
+@media (max-width: 500px) {
+  .App .clock {
+    width: 100%;
+  }
+
+  .App .clock h1 {
+    font-size: 9.8vw;
+  }
+
+  .App .clock .breaks .length_session #break-label,
+  .App .clock .breaks .length_session #session-label {
+    font-size: 7vw;
+  }
+
+  .App .clock .breaks .length_session .btns_grp button {
+    font-size: 5.5vw;
+  }
+
+  .App .clock .breaks .length_session .btns_grp #break-length,
+  .App .clock .breaks .length_session .btns_grp #session-length {
+    font-size: 5.5vw;
+  }
+
+  .App .clock .timer {
+    border: 1.8vw solid rgb(19, 53, 58);
+    border-radius: 7.8vw;
+    padding: 2.5vw 8vw;
+  }
+
+  .App .clock .timer #timer-label {
+    font-size: 5.2vw;
+  }
+
+  .App .clock .timer #time-left {
+    font-size: 15.8vw;
+  }
+
+  div #start-stop,
+  div #reset {
+    font-size: 0vw;
+  }
 }

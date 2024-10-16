@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "../App.css";
 
 export default function Up_down({
   togle_disabled,
@@ -6,7 +7,7 @@ export default function Up_down({
   set_function,
   for_icon,
   for_icon2,
-  btn_style
+  btn_style,
 }) {
   return (
     <>
